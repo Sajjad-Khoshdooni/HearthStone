@@ -81,8 +81,6 @@ public class CardDoAction {
                 return;
 
             case "echo":
-                echo(cardAction.getAction());
-                return;
 
             case "repeatable":
                 echo(cardAction.getAction());
