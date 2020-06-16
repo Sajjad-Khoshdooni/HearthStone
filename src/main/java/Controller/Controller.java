@@ -14,7 +14,7 @@ import java.util.TimerTask;
 
 import static Controller.GameState.*;
 
-public class Controller extends JFrame {
+public class Controller extends JFrame implements Runnable{
     private Config conf = Config.getInstance();
     private SoundPlayer soundPlayer = SoundPlayer.getInstance();
     private Board board;
@@ -48,10 +48,10 @@ public class Controller extends JFrame {
         initFrame();
         init(this);
 
-        //ticker
-        Timer timer=new Timer();
-        TimerTask timertask =new Ticker();
-        timer.scheduleAtFixedRate(timertask,conf.getData("framedelay"),conf.getData("frametimer"));
+//        //ticker
+//        Timer timer=new Timer();
+//        TimerTask timertask =new Ticker();
+//        timer.scheduleAtFixedRate(timertask,conf.getData("framedelay"),conf.getData("frametimer"));
     }
 
     private void initFrame(){
@@ -296,11 +296,9 @@ public class Controller extends JFrame {
         setVisible(false);
     }
 
-    ///
-    private class Ticker extends TimerTask{
-
-        @Override
-        public void run() {
+    @Override
+    public void run() {
+        while (true){
             gameState();
         }
     }
