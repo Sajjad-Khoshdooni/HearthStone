@@ -7,18 +7,9 @@ public class Board{
     private List<Card> cards=new ArrayList<Card>();
     private List<Hero> heros=new ArrayList<Hero>();
     private Player player=new Player();
-//    private String cardSkinUrl = congif.getskin;
 
     //getter and setter
     public Board(){ init();}
-
-  //  public String getCardSkinUrl() {
-    //    return cardSkinUrl;
-//    }
-
-  //  public void setCardSkinUrl(String cardSkinUrl) {
-    //    this.cardSkinUrl = cardSkinUrl;
-   // }
 
     public Player getPlayer() { return player; }
 
