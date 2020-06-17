@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board{
-    private List<Card> cards=new ArrayList<Card>();
-    private List<Hero> heros=new ArrayList<Hero>();
+    private List<Card> cards=new ArrayList<>();
+    private List<Hero> heros=new ArrayList<>();
     private Player player=new Player();
 
     //getter and setter
@@ -38,7 +38,6 @@ public class Board{
     }
 
     private void cardGiveBirth(){
-
         //baray card ha yek field misazim ta speacial work ro bege
 
         // HERO CARDS SECTION-Logic.Mage
@@ -60,21 +59,20 @@ public class Board{
         cards.add(dreadscale);
 
         Card highPriestessJeklik=new Minion("HighPriestessJeklik",4,"Legendary","Warlock","Minion","Taunt, Lifesteal When you discard this,add 2 copies of it to your hand",4,3,11);
-       cards.add(highPriestessJeklik);
+        cards.add(highPriestessJeklik);
 
-          // HERO CARDS SECTION-HUNTER
-          Card swampKingDred = new Minion("SwampKingDred",7,"Free","Hunter","Minion","After your opponent plays a minion,attack it",9,9,11);
-          cards.add(swampKingDred);
+        // HERO CARDS SECTION-HUNTER
+        Card swampKingDred = new Minion("SwampKingDred",7,"Free","Hunter","Minion","After your opponent plays a minion,attack it",9,9,11);
+        cards.add(swampKingDred);
+        Card deadlyShot = new Spell("DeadlyShot",3,"Free","Hunter","Spell","Destroy a random enemy minion",11);
+        cards.add(deadlyShot);
 
-          Card deadlyShot = new Spell("DeadlyShot",3,"Free","Hunter","Spell","Destroy a random enemy minion",11);
-          cards.add(deadlyShot);
+        // HERO CARDS SECTION-PRIEST
+        Card highPriestAmet = new Minion("HighPriestAmet",4,"Free","Priest","Minion","Whenever you summon a minion set its health equal to this minions",7,2,11);
+        cards.add(highPriestAmet);
 
-          // HERO CARDS SECTION-PRIEST
-          Card highPriestAmet = new Minion("HighPriestAmet",4,"Free","Priest","Minion","Whenever you summon a minion set its health equal to this minions",7,2,11);
-          cards.add(highPriestAmet);
-
-          Card penance = new Spell("Penance",2,"Free","Priest","Spell","Lifesteal deal 3 damage to a minion",11);
-          cards.add(penance);
+        Card penance = new Spell("Penance",2,"Free","Priest","Spell","Lifesteal deal 3 damage to a minion",11);
+        cards.add(penance);
 
 
         // Create natural cards
@@ -157,9 +155,9 @@ public class Board{
         Card WickedKnife = new Weapon("WickedKnife",1,"Free","Neutral","Weapon","",2,1,11);
         cards.add(WickedKnife);
 
- //       Quest and Reward Cards;
+        //Quest and Reward Cards;
 
-        // card tarahi khodm --> emtiazie faz 1
+        //card tarahi khodm --> emtiazie faz 1
         Card White=new Spell("white",5,"Free","Neutral","Spell","HeroPower birthday.",11);
         cards.add(White);
     }

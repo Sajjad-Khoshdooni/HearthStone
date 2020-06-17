@@ -8,5 +8,6 @@ public enum GameState {
     collection,
     status,
     setting,
-    exit
+    exit,
+    end
 }

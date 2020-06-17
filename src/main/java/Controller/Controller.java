@@ -2,15 +2,12 @@ package Controller;
 
 import Config.*;
 import Logic.*;
-import com.google.gson.Gson;
 import gui.*;
 
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import static Controller.GameState.*;
 
@@ -48,10 +45,6 @@ public class Controller extends JFrame implements Runnable{
         initFrame();
         init(this);
 
-//        //ticker
-//        Timer timer=new Timer();
-//        TimerTask timertask =new Ticker();
-//        timer.scheduleAtFixedRate(timertask,conf.getData("framedelay"),conf.getData("frametimer"));
     }
 
     private void initFrame(){
@@ -93,8 +86,6 @@ public class Controller extends JFrame implements Runnable{
             }
         });
 
-        //
-
         board = new Board();
         entranceWindow = new EntranceWindow(this,fileWorks);
         menuWindow = new MenuWindow(exitButton);
@@ -108,27 +99,17 @@ public class Controller extends JFrame implements Runnable{
         shop = new Shop();
         getLog = new Log();
 
-        ///
-
-
-        /**
-         */
-////        homePlayer = new FileWorks().logIn("sajjad");
         homePlayer = new Player();
-        homePlayer.setUsername("asdsgkjhjhjh123415246346");
-        homePlayer.setPassword("79375773057");
-        homePlayer.initPlatoonCard("asd",board.getHeros().get(3));
-        for (int i=0 ;i<20; i++){
-            homePlayer.getPlatoonCardList().get(0).addCards(board.getCards().get(i));
-            homePlayer.addEntireCardList(board.getCards().get(i));
-        }
-
-        homePlayer.setGamePlatoonCard(homePlayer.getPlatoonCardList().get(0));
-        fileWorks.setUsername(homePlayer.getUsername());
+//        homePlayer.setUsername("asdsgkjhjhjh123415246346");
+//        homePlayer.setPassword("79375773057");
+//        homePlayer.initPlatoonCard("asd",board.getHeros().get(3));
+//        for (int i=0 ;i<20; i++){
+//            homePlayer.getPlatoonCardList().get(0).addCards(board.getCards().get(i));
+//            homePlayer.addEntireCardList(board.getCards().get(i));
+//        }
 //
-//        /**
-//         *
-//         */
+//        homePlayer.setGamePlatoonCard(homePlayer.getPlatoonCardList().get(0));
+//        fileWorks.setUsername(homePlayer.getUsername());
     }
 
     private void gameState(){
@@ -161,6 +142,7 @@ public class Controller extends JFrame implements Runnable{
             case exit:
                 exitSetup();
                 break;
+
             case setting:
                 settingSetup();
                 break;
@@ -296,9 +278,13 @@ public class Controller extends JFrame implements Runnable{
         setVisible(false);
     }
 
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
     @Override
     public void run() {
-        while (true){
+        while (gameState == end){
             gameState();
         }
     }

@@ -44,6 +44,7 @@ public class EndGameFrame extends JFrame {
 
                 soundPlayer.pause();
                 controller.setVisible(false);
+                controller.setGameState(GameState.end);
                 setVisible(false);
             }
         });
