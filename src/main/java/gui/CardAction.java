@@ -36,23 +36,3 @@ public abstract class CardAction {
     }
 }
 
-class Summon extends CardAction{
-    public Summon(String actionName, String action) {
-        super(actionName, action, "summon");
-    }
-}
-class BattleCry extends CardAction{
-    public BattleCry(String actionName, String action) {
-        super(actionName, action, "battleCry");
-    }
-}
-class DeathRattle extends CardAction{
-    public DeathRattle(String actionName, String action) {
-        super(actionName, action, "deathRattle");
-    }
-}
-class EndTurnAction extends CardAction{
-    public EndTurnAction(String actionName, String action) {
-        super(actionName, action, "endTurnAction");
-    }
-}

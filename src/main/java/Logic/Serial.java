@@ -2,6 +2,7 @@ package Logic;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import gui.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -152,6 +153,18 @@ public class Serial{
         return gson.fromJson(card, new TypeToken<List<Card>>(){}.getType());
     }
 
+    public String cardActionSerialize(List<CardAction> cardActions){return gs.toJson(cardActions);}
+
+    public List<CardAction> cardActionDeserialize(String cardAction){
+        CardActionDeserializer cad =new CardActionDeserializer("actionType");
+        cad.registerBarnType("BattleCry", BattleCry.class);
+        cad.registerBarnType("DeathRattle", DeathRattle.class);
+        cad.registerBarnType("Summon", Summon.class);
+        cad.registerBarnType("EndTurnAction", EndTurnAction.class);
+
+        Gson gson=new GsonBuilder().registerTypeAdapter(CardAction.class, cad).create();
+        return gson.fromJson(cardAction, new TypeToken<List<CardAction>>(){}.getType());
+    }
 
     public List<Hero> heroDeserialize(String serial){
         // dar sorat afzayesh hero ha in bakhsh tagir mikonad
@@ -213,7 +226,6 @@ public class Serial{
         return hero;
     }
 
-
     public class CardDeserializer implements JsonDeserializer<Card> {
         private String cardTypeElementName;
         private Gson gson;
@@ -235,6 +247,31 @@ public class Serial{
 
             Class<? extends Card> cardType = cardTypeRegistry.get(cardTypeElement.getAsString());
             return gson.fromJson(cardObject, cardType);
+        }
+
+    }
+
+    public class CardActionDeserializer implements JsonDeserializer<CardAction> {
+        private String cardActionTypeElementName;
+        private Gson gson;
+        private Map<String, Class<? extends CardAction>> cardActionTypeRegistry;
+
+        public CardActionDeserializer(String cardActionTypeElementName) {
+            this.cardActionTypeElementName = cardActionTypeElementName;
+            this.gson = new Gson();
+            this.cardActionTypeRegistry = new HashMap<>();
+        }
+
+        public void registerBarnType(String cardActionTypeName, Class<? extends CardAction> cardType) {
+            cardActionTypeRegistry.put(cardActionTypeName, cardType);
+        }
+
+        public CardAction deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
+            JsonObject cardActionObject = json.getAsJsonObject();
+            JsonElement cardActionTypeElement = cardActionObject.get(cardActionTypeElementName);
+
+            Class<? extends CardAction> cardType = cardActionTypeRegistry.get(cardActionTypeElement.getAsString());
+            return gson.fromJson(cardActionObject, cardType);
         }
 
     }

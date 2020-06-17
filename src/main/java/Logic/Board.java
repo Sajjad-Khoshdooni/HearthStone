@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board{
-    private List<Card> cards=new ArrayList<>();
-    private List<Hero> heros=new ArrayList<>();
-    private Player player=new Player();
+    private List<Card> cards = new ArrayList<>();
+    private List<Hero> heros = new ArrayList<>();
+    private Player player = new Player();
 
     //getter and setter
     public Board(){ init();}
@@ -40,21 +40,21 @@ public class Board{
     private void cardGiveBirth(){
         //baray card ha yek field misazim ta speacial work ro bege
 
-        // HERO CARDS SECTION-Logic.Mage
+        // HERO CARDS SECTION-Mage
         Card polymorph=new Spell("Polymorph",4,"Free","Mage","Spell","Transform a minion into 1/1 sheep.",11);
         cards.add(polymorph);
 
         Card fireball=new Spell("Fireball",4,"Free","Mage","Spell","Deal 6 damage.",11);
         cards.add(fireball);
 
-        // HERO CARDS SECTION-Logic.Rouge
+        // HERO CARDS SECTION-Rouge
         Card friendlySmith = new Spell("FriendlySmith",1,"Free","Rouge","Spell","Discover a weapon from any class.Add it to your Adventure Deck with 2/2",11);
         cards.add(friendlySmith);
 
         Card sinisterStrike=new Spell("SinisterStrike",1,"Free","Rouge","Spell","Deal 3 damage to enemy hero.",11);
         cards.add(sinisterStrike);
 
-        // HERO CARDS SECTION-Logic.Warlock
+        // HERO CARDS SECTION-Warlock
         Card dreadscale=new Minion("Dreadscale",3,"Legendary","Warlock","Minion","At the end of your turn, deal 1 damage to all other minions.",2,4,11);
         cards.add(dreadscale);
 
@@ -139,7 +139,7 @@ public class Board{
 
 
 
-        //create weapon Logic.Card
+        //create weapon Card
         Card BloodClaw=new Weapon("Bloodclaw",1,"Common","Neutral","Weapon","Battlecry: Deal 5 damage to your hero.",2,2,11);
         cards.add(BloodClaw);
 
